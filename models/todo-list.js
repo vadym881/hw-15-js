@@ -31,14 +31,7 @@ export class TodoList {
   }
 
   isExists(title) {
-    let isExists = false;
-    for (const task of this.tasksList) {
-      if (task.title === title) {
-        isExists = true;
-        break;
-      }
-    }
-    return isExists;
+    return this.tasksList.find((task) => task.title === title) !== undefined;
   }
 
   findTaskByTitle(title) {
@@ -46,7 +39,7 @@ export class TodoList {
       console.log(`Task "${title}" is undefined`);
       return;
     }
-    return this.tasksList.filter((task) => task.title === title)[0];
+    return this.tasksList.find((task) => task.title === title);
   }
 
   getTasksAmount() {
